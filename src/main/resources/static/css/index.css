@@ -1,0 +1,155 @@
+/* 公共部分*/
+* {
+	margin: 0;
+	padding: 0;
+}
+a {
+    text-decoration: none;
+}
+
+/* 公共部分*/
+
+/* header */
+
+.header-main{
+	height: 100px;
+	background-color: cyan; 
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)；
+}
+
+.nav{
+    padding-top: 30px;
+}
+.nav a{
+    /*font-family: 'Monoton';*/
+    color: #000;
+    font-style: none;
+    text-decoration: none;
+    padding-left: 120px;
+	font-size: 30px;
+}
+.header-nav {
+    margin-left: 30px;
+	list-style: none;
+    display: inline-block;
+}
+.nav-search{
+    float: right;
+    padding-right: 50px;
+
+}
+.header-nav li{
+	float: left;
+    padding-left: 20px;
+
+    color: #000;
+}
+#search{
+    border: none;
+    width: 250px;
+    height: 40px;
+    border-radius: 16px;
+}
+#submit-search{
+    width: 50px;
+    height: 40px;
+    background-color: #fff;
+    color: #222;
+    position: absolute;
+    right: 50px;
+    top: 30px;
+    border:none;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* header */
+
+/*body main*/
+/*left*/
+.main{
+    margin-top: 30px;
+    height: 1000px;
+    background-color: gray;
+   
+}
+
+.left{
+    display: inline-block;
+    margin-left: 20px;
+
+    width: 20%;
+    height: 1000px;
+    background-color: #256;
+
+}
+
+
+.personal{
+    margin-top: 20px;
+    position: absolute;
+    width: 200px;
+    background-color: #277;
+    height: 300px;
+    margin-left: 30px;
+    text-align: center;
+    border-radius: 20px;
+}
+.personal img{
+    margin-top: 50px;
+    width: 100px;
+    height: 100px;
+}
+.line{
+    margin-left: 10%;
+    margin-top: 10px;
+    display: block;
+    border: 1px solid gray;
+    width: 80%;
+}
+/* left*/
+/* middle*/
+.middle{
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+    width: 53%;
+    height: 1000px;
+    background-color: #128;
+}
+
+.middle-container{
+    position: absolute;
+}
+.middle-container a{
+    color: #fff;
+}
+/* middle*/
+
+/* right*/
+.right{
+    display: inline-block;
+    margin-left: 20px;
+    width: 20%;
+    height: 1000px;
+    background-color: #299;
+}
+.right-container{
+    margin-top: 20px;
+    margin-left: 30px;
+    position: absolute;
+}
+/* right*/
+
+/*body main*/
+
+
+/*footer*/
+.site-footer{
+    background-color: #474e5d ;
+    height: 80px;
+    color:#b3b5ba;
+    text-align: center;
+    padding-top: 30px;
+}
+/*footer*/
