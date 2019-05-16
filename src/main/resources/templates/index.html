@@ -3,7 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>子沐的空间 | 技术博客</title>
-    <link href="/static/css/index.css" rel="stylesheet" />
+    <link href="../static/css/index.css" rel="stylesheet" />
+	<style>
+		.blog-1{
+			width: 500px;
+			height: 200px;
+
+			/*background-color: cyan;*/
+			margin: 10px auto;
+			/*text-align: center;*/
+			border-radius: 20px;
+			color: #565a5f;
+
+		}
+		.title{
+			text-decoration: none;
+			color: #565a5f!important;
+
+		}
+		.middle-container{
+			width: 100%;
+		}
+		.art-line{
+			display: block;
+			height: 0;
+			width: 500px;
+			border: 2px solid gray;
+
+		}
+
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -30,11 +59,11 @@
 		<div class="main">
 			<div class="left">
 				<div class="personal">
-					<img src="../static/images/man.jpg" alt="">
+					<img src="../static/images/erweima.png" alt="">
 					<br>
-					<a href="https://www.github.com/li-donglei" target="_blank"><h2>李东雷|子沐</h2></a>
+					<a href="https://www.github.com/li-donglei" target="_blank"><h2>李东雷</h2></a>
 					<h3>Student</h3>
-					<span>江苏 · 徐州</span>
+					<span class="location">江苏 · 徐州</span>
 					<span class="line"></span>
 
 				</div>
@@ -43,7 +72,24 @@
 				<div class="middle-container">
 					<!-- <a href="/show">文章</a> -->
 					<!--<span th:text="${hello}"></span>-->
+					<div th:each="blog:${blog}">
+						<article class="blog-1" >
+							<h1 ><a class="title" th:href="@{'/show?id='+${blog.id}}" th:text="${blog.title}"></a></h1>
+							<br>
+							<span th:text="${blog.createtime}"></span> <br><br>
+							<p th:text="${blog.summary}"></p>
+							<br>
+
+							id: <span th:text="${blog.id}"></span>
+
+							<br>
+							<span class="art-line"></span>
+						</article>
+					</div>
+
+
 				</div>
+
 				
 				
 			</div>

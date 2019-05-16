@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.Map;
+
 
 @RestController
 public class BlogController {
@@ -31,6 +33,11 @@ public class BlogController {
 //        System.out.println("content========"+content);
         return content;
     }
+
+//    @RequestMapping("getIndex")
+//    public Map<String,String> getIndex(Map<String,String> map){
+//        return map;
+//    }
 
     @RequestMapping("/insert")
     public void insertBlog(String title, String summary, String content,String createtime){
@@ -81,22 +88,27 @@ public class BlogController {
 //        return modelAndView;
 //    }
 
+    /**
+     * 展示响应博客页面
+     * @param id
+     * @return
+     */
     @RequestMapping("/show")
     @ResponseBody
     public ModelAndView show(@RequestParam(value = "id", required = false,defaultValue = "0") int id){
         System.out.println(id);
         if(id == 0){
-            System.out.println("HHHHHH");
             id = blogService.lastId();
         }
 
-        ModelAndView modelAndView = new ModelAndView("blog/view");
+        ModelAndView modelAndView = new ModelAndView("blog/blogview");
         String content = selectBlog(id);
         System.out.println(content);
         modelAndView.addObject("viewContent" , content);
         System.out.println("跳转至内容显示页面");
         return modelAndView;
     }
+
 
 
 }

@@ -5,6 +5,8 @@ import com.donglei.myblog.mapper.BlogMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BlogService {
 
@@ -18,6 +20,11 @@ public class BlogService {
     public String insertBlog(Blog blog){
         blogMapper.insertBlog(blog);
         return "SUCCESS";
+    }
+
+    public List<Blog> selectBlog(){
+
+        return blogMapper.selectBlog();
     }
 
     public int lastId(){

@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface BlogMapper {
@@ -16,6 +18,9 @@ public interface BlogMapper {
 
     @Select("select * from blog where id = #{id}")
     Blog selectById(Integer id);
+
+    @Select("select * from blog")
+    List<Blog> selectBlog();
 
     @Select("select max(id) from blog")
     int lastId();
