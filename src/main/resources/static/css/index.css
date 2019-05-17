@@ -156,6 +156,9 @@ a {
     position: absolute;
     width: 100%;
 }
+.middle-container{
+    width: 100%;
+}
 .middle-container a{
     color: #fff;
 }
