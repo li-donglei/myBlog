@@ -40,8 +40,8 @@ public class BlogController {
 //    }
 
     @RequestMapping("/insert")
-    public void insertBlog(String title, String summary, String content,String createtime){
-        Blog blog = new Blog(title,summary,content,createtime);
+    public void insertBlog(String title, String summary, String content,String createtime,String catalog){
+        Blog blog = new Blog(title,summary,content,createtime,catalog);
         blogService.insertBlog(blog);
         //return "success";
     }
@@ -54,12 +54,13 @@ public class BlogController {
         String content = blog.getContent();
         String summary = blog.getSummary();
         String createtime = new Date().toLocaleString();
-        System.out.println(title);
-        System.out.println(createtime);
+        String catalog = blog.getCatalog();
+//        System.out.println(title);
+//        System.out.println(createtime);
         //String content = request.getParameter("content");
         // 将content存到数据库
 
-        insertBlog(title,summary,content,createtime);
+        insertBlog(title,summary,content,createtime,catalog);
 
         ModelAndView modelAndView = new ModelAndView("blog/view");
         //将内容发送至前台预览
@@ -103,7 +104,7 @@ public class BlogController {
 
         ModelAndView modelAndView = new ModelAndView("blog/blogview");
         String content = selectBlog(id);
-        System.out.println(content);
+        //System.out.println(content);
         modelAndView.addObject("viewContent" , content);
         System.out.println("跳转至内容显示页面");
         return modelAndView;

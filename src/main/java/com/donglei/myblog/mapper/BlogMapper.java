@@ -13,7 +13,7 @@ import java.util.List;
 public interface BlogMapper {
 
 
-    @Insert("insert into blog(title,summary,content,createtime) values(#{title},#{summary},#{content},#{createtime})")
+    @Insert("insert into blog(title,summary,content,createtime,catalog) values(#{title},#{summary},#{content},#{createtime},#{catalog})")
     void insertBlog(Blog blog);
 
     @Select("select * from blog where id = #{id}")

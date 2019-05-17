@@ -5,22 +5,8 @@
     <title>子沐的空间 | 技术博客</title>
     <link href="../static/css/index.css" rel="stylesheet" />
 	<style>
-		.blog-1{
-			width: 500px;
-			height: 200px;
 
-			/*background-color: cyan;*/
-			margin: 10px auto;
-			/*text-align: center;*/
-			border-radius: 20px;
-			color: #565a5f;
 
-		}
-		.title{
-			text-decoration: none;
-			color: #565a5f!important;
-
-		}
 		
 		.art-line{
 			display: block;
@@ -70,20 +56,23 @@
 				<div class="middle-container">
 					<!-- <a href="/show">文章</a> -->
 					<!--<span th:text="${hello}"></span>-->
-					<div th:each="blog:${blog}">
-						<article class="blog-1" >
-							<h1 ><a class="title" th:href="@{'/show?id='+${blog.id}}" th:text="${blog.title}"></a></h1>
-							<br>
-							<span th:text="${blog.createtime}"></span> <br><br>
-							<p th:text="${blog.summary}"></p>
-							<br>
+					<!--<div >-->
+						<article class="blog-1" th:each="blog:${blog}">
+							<div class="blog">
+								<h1 ><a class="title" th:href="@{'/show?id='+${blog.id}}" th:text="${blog.title}"></a></h1>
+								<br>
+								<span th:text="${blog.createtime}"></span> <br><br>
+								<p th:text="${blog.summary}"></p>
+								<br>
 
-							id: <span th:text="${blog.id}"></span>
+								id: <span th:text="${blog.id}"></span>
 
-							<br>
-							<span class="art-line"></span>
+								<br>
+								<!--<span class="art-line"></span>-->
+							</div>
+
 						</article>
-					</div>
+					<!--</div>-->
 
 
 				</div>

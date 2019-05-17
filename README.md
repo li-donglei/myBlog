@@ -46,6 +46,8 @@ title(varchar(100)文章标题) ，
 
 summary(text,文章摘要)，
 
+catalog(文章分类)，
+
 content(text 文章内容，存储markdown语法格式), 
 
 createtime(创作时间（time)),

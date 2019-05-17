@@ -12,17 +12,19 @@ public class Blog implements Serializable {
     private Integer commentsize;
     private Integer votesize;
     private String comment;
+    private String catalog;
 
 
 
     public Blog() {
     }
 
-    public Blog(String title, String summary, String content, String createtime) {
+    public Blog(String title, String summary, String content, String createtime,String catalog) {
         this.title = title;
         this.summary = summary;
         this.content = content;
         this.createtime = createtime;
+        this.catalog = catalog;
     }
 
     public Integer getId() {
@@ -95,5 +97,13 @@ public class Blog implements Serializable {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getCatalog() {
+        return catalog;
+    }
+
+    public void setCatalog(String catalog) {
+        this.catalog = catalog;
     }
 }

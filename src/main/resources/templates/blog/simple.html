@@ -27,8 +27,18 @@
                 width: 600px;
                 height: 50px;
             }
+            #catalog {
+                border: 1px solid dimgray;
+                width: 100px;
+                height: 20px;
+            }
             .title, .summary{
                 margin-left: 64px;
+            }
+            .catalog{
+                position: absolute;
+                top: 130px;
+                right: 64px;
             }
 
 
@@ -53,11 +63,19 @@
                 <div class="summary">
                     <span>Summary: </span><input type="text" name="summary" id="summary">
                 </div>
+
+                <div class="catalog">
+                    Catalog: <input type="text" name="catalog" id="catalog">
+                </div>
+
+
                 <div id="test-editormd">
 
                     <textarea name="content" id="content" style="display:none;">
                     </textarea>
                 </div>
+
+
 
             </form>
 

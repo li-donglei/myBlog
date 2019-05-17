@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,7 @@ public class MainController {
     public ModelAndView index(ModelAndView mv){
         mv.setViewName("index");
         List<Blog> blog= blogService.selectBlog();
+        Collections.reverse(blog);//blog逆序
         mv.addObject("blog",blog);
         return mv;
     }
