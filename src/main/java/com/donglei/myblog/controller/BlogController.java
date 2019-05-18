@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -22,6 +23,9 @@ public class BlogController {
 
     @RequestMapping("/blogedit")
     public ModelAndView blogedit(){
+
+
+
         ModelAndView modelAndView = new ModelAndView("blog/simple");
         //modelAndView.addObject("s","hello");
         return modelAndView;
@@ -53,8 +57,14 @@ public class BlogController {
         String title = blog.getTitle();
         String content = blog.getContent();
         String summary = blog.getSummary();
-        String createtime = new Date().toLocaleString();
+        // Date数据格式
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        String createtime = sdf.format(new Date());
+
+
         String catalog = blog.getCatalog();
+
 //        System.out.println(title);
 //        System.out.println(createtime);
         //String content = request.getParameter("content");
@@ -97,10 +107,13 @@ public class BlogController {
     @RequestMapping("/show")
     @ResponseBody
     public ModelAndView show(@RequestParam(value = "id", required = false,defaultValue = "0") int id){
+
+
         System.out.println(id);
         if(id == 0){
             id = blogService.lastId();
         }
+        blogService.updateReadSize(id);
 
         ModelAndView modelAndView = new ModelAndView("blog/blogview");
         String content = selectBlog(id);

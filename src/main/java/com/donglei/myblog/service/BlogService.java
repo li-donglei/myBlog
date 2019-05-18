@@ -31,4 +31,8 @@ public class BlogService {
         return blogMapper.lastId();
     }
 
+    public void updateReadSize(Integer id){
+        blogMapper.updateReadSize(id);
+    }
+
 }

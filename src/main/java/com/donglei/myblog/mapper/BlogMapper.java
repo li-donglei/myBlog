@@ -4,6 +4,7 @@ import com.donglei.myblog.entity.Blog;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,4 +25,7 @@ public interface BlogMapper {
 
     @Select("select max(id) from blog")
     int lastId();
+
+    @Update("update blog set readsize = readsize+1 where id=#{id}")
+    void updateReadSize(Integer id);
 }

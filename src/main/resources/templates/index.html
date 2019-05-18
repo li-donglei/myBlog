@@ -3,18 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>子沐的空间 | 技术博客</title>
-    <link href="../static/css/index.css" rel="stylesheet" />
+    <link href="static/css/index.css" rel="stylesheet" />
+	<link rel="stylesheet" href="static/fonts/style.css">
 	<style>
-
-
-		
-		.art-line{
-			display: block;
-			height: 0;
-			width: 500px;
-			border: 2px solid gray;
-
-		}
+		/*.title:hover{*/
+			/*color: #38b7ea!important;*/
+		/*}*/
 
 	</style>
 </head>
@@ -24,10 +18,10 @@
 
 		<header class="header-main">
     		<div class="nav">
-    			<a href="#">My BLOG</a>
+    			<a class="nav-ico" href="#">My BLOG</a>
                 <ul class="header-nav">
-                	<li>首页</li>
-                	<li>关于我</li>
+                	<li><a href="/index.html" class="nav-a">首页</a></li>
+                	<li><a href="#" class="nav-a">关于我</a></li>
                 </ul>
 
                 <form class="nav-search">
@@ -59,13 +53,24 @@
 					<!--<div >-->
 						<article class="blog-1" th:each="blog:${blog}">
 							<div class="blog">
-								<h1 ><a class="title" th:href="@{'/show?id='+${blog.id}}" th:text="${blog.title}"></a></h1>
+								<h1 ><a class="title" th:class="title" th:href="@{'/show?id='+${blog.id}}" th:text="${blog.title}"></a></h1>
 								<br>
-								<span th:text="${blog.createtime}"></span> <br><br>
+								<span class="icon-calendar"></span>&nbsp;
+								<span th:text="${#strings.substring(blog.createtime,0,11)}"></span>
+								&nbsp;&nbsp;&nbsp;
+								<span class="icon-price-tag"></span>&nbsp;
+								<span th:text="${blog.catalog}"></span>
+								&nbsp;&nbsp;&nbsp;
+								<span class="icon-eye"></span>&nbsp;
+								<span th:text="${blog.readsize}"></span>
+								<br><br> <br>
 								<p th:text="${blog.summary}"></p>
-								<br>
+								<br><br>
+								<p class="article-more-link">
+									<a th:href="@{'/show?id='+${blog.id}}">查看全文</a>
+								</p>
 
-								id: <span th:text="${blog.id}"></span>
+								<!--id: <span th:text="${blog.id}"></span>-->
 
 								<br>
 								<!--<span class="art-line"></span>-->

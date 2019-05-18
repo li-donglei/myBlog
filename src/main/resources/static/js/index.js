@@ -5,7 +5,7 @@ $(function(){
 	// 	console.log(h);
 	// };
 	var navH = $(".personal").offset().top;
-	console.log(navH);
+	// console.log(navH);
 	window.onscroll=function(){
 		var scroH = $(this).scrollTop();
 		if(scroH>=navH-10){
@@ -14,6 +14,6 @@ $(function(){
 			$(".personal").css({"position":"fixed","top":navH-scroH});
 
 		}
-		console.log(scroH);
+		// console.log(scroH);
 	};
 })

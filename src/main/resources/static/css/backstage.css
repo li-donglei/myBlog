@@ -1,0 +1,28 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+/*aside*/
+aside {
+	display: inline-block;
+	/*display: none;*/
+	width: 230px;
+	height: 1000px;
+	background-color: #1F2325;
+}
+.hiden {
+	width: 230px;
+	height: 80px;
+	border-bottom:1px solid #626466;
+}
+
+
+/*aside*/
+
+/*main*/
+.main {
+display: inline-block;
+}
+
+
+/*main*/
