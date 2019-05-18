@@ -6,14 +6,30 @@
 aside {
 	display: inline-block;
 	/*display: none;*/
+	/*position: relative;*/
 	width: 230px;
-	height: 1000px;
+	height: 650px;
 	background-color: #1F2325;
 }
-.hiden {
+/*.hiden {
 	width: 230px;
 	height: 80px;
 	border-bottom:1px solid #626466;
+}*/
+.icon-circle-left, .icon-circle-right {
+	position: absolute;
+	color: #000;
+	font-size: 30px;
+
+}
+.icon-circle-left {
+	top: 10px;
+	left: 10px;
+}
+.icon-circle-right {
+	display: none;
+	top: 10px;
+	left: 60px;
 }
 
 
@@ -21,7 +37,8 @@ aside {
 
 /*main*/
 .main {
-display: inline-block;
+	display: inline-block;
+	position: relative;
 }
 
 

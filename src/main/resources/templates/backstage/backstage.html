@@ -4,23 +4,35 @@
     <meta charset="UTF-8">
     <title>BackStage</title>
     <link rel="stylesheet" href="../../static/css/backstage.css">
+    <link rel="stylesheet" href="../../static/fonts/style.css">
 </head>
 <body>
-
+	<span class="icon-circle-left" ></span>
+	<span class="icon-circle-right"></span>
 <aside class="aside">
-	<div class="hiden">
-		<
-	</div>
+
 </aside>
+
 <div class="main">dasd</div>
 
 
 <script src="../../static/js/jquery.min.js"></script>
 <script>
 	$(function(){
-		$(".hiden").click(function(){
+		$(".icon-circle-left").click(function(){
 			console.log("hiedn");
 			$(".aside").css("display","none");
+			$(".icon-circle-left").css("display","none");
+			$(".icon-circle-right").css("display","block");
+			$(".icon-circle-right").css("left","10px");
+
+		});
+		$(".icon-circle-right").click(function(){
+			console.log("hiedn");
+			$(".aside").css("display","inline-block");
+			$(".icon-circle-left").css("display","block");
+			$(".icon-circle-right").css("display","none");
+
 		});
 	})
 </script>
