@@ -101,6 +101,7 @@ a {
 
     width: 20%;
     height: 2000px;
+    /*position: relative;*/
     /*background-color: #256;*/
 
 }
@@ -166,9 +167,7 @@ a {
     position: absolute;
     width: 100%;
 }
-.middle-container{
-    width: 100%;
-}
+
 /*.middle-container a{*/
     /*color: #fff;*/
 /*}*/
@@ -250,7 +249,7 @@ a {
     /* 阴影*/
     /*box-shadow: 0 0 12px gray;*/
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
-    
+
 
     border-radius: 20px;
 
