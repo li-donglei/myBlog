@@ -8,6 +8,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class AdminLoginInterceptor implements HandlerInterceptor {
@@ -16,7 +18,9 @@ public class AdminLoginInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession(true);
         Object admin = session.getAttribute("name");
         Object passwd = session.getAttribute("passwd");
-        System.out.println("admin====="+admin);
+//        System.out.println("admin====="+admin);
+
+        List<String> a = new ArrayList<>();
 
 //        Cookie[] cookies = request.getCookies();
 //        System.out.println(cookies[0].getValue());

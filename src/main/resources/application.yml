@@ -1,3 +1,4 @@
+
 spring:
   port: 8080
   datasource:
@@ -10,4 +11,5 @@ spring:
 
 mybatis:
   type-aliases-package: com.donglei.myblog.entity
-
+server:
+  port:
