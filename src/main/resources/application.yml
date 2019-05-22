@@ -13,3 +13,5 @@ mybatis:
   type-aliases-package: com.donglei.myblog.entity
 server:
   port:
+img:
+  location: C:/Users/18451/Desktop/upload

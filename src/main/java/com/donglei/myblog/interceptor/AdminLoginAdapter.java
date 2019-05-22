@@ -18,9 +18,11 @@ public class AdminLoginAdapter implements WebMvcConfigurer {
         //registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/index");
         //super.addInterceptors(registry);
     }
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/image/**").addResourceLocations("file:C:/Users/18451/Desktop/");
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:C:/Users/18451/Desktop/upload/");
 
 
-
-
+    }
 
 }

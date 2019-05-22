@@ -99,10 +99,15 @@
                     path    : "static/lib/",
                     saveHTMLToTextarea : true,
 
+                    imageUpload: true,
+                    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                    imageUploadURL: "/file",
+                    // previewTheme:"dark",
+
 
 
                     toolbarIcons : function() {
-                        return ["undo", "redo", "|","bold", "italic","ucwords","uppercase","lowercase","|","h1","h2","h3","h4","h5","h6","|","list-ul","list-ol","table","datetime","hr",  "||",  "watch", "fullscreen", "preview", "releaseIcon", "index"]
+                        return ["undo", "redo", "|","bold", "italic","ucwords","uppercase","lowercase","|","h1","h2","h3","h4","h5","h6","|","list-ul","list-ol","table","datetime","hr",  "||",  "watch", "fullscreen", "preview","image", "releaseIcon", "index"]
                     },
 
                     /*自定义功能按钮，下面自定义了2个，一个是发布，一个是返回首页*/

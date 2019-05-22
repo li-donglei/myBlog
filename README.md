@@ -14,17 +14,19 @@
 
 ### 目录结构
 
-* main/java/com.donglei.blog
-  * controller :  控制层
-    * BlogController :   博客编写页面的控制层
-    * MainController ：  与首业相关的控制层
-  * entity :  pojo数据库映射实体
-    * Blog :  博客文章存储实体
-  * Mapper
-    * BlogMapper：Blog映射
-  * Service
-    * BlogService：数据库相关操作  service层
-  * MyblogApplication.java 
+| —— main/java/com.donglei.blog
+
+* controller :  控制层
+  * BlogController :   博客编写页面的控制层
+  * MainController ：  与首业相关的控制层
+* entity :  pojo数据库映射实体
+  * Blog :  博客文章存储实体
+* Mapper
+  * BlogMapper：Blog映射
+* Service
+  * BlogService：数据库相关操作  service层
+* MyblogApplication.java 
+
 * resources
   * static：存放静态资源，包括css\js\images...
   * templates：thymeleaf解析的模板文件，html文件
