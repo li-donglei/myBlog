@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.util.*;
 
@@ -24,7 +22,6 @@ import java.util.*;
 public class MainController {
 
     @Value("${img.location}")
-
     private String folder;
 
     @Autowired
@@ -41,32 +38,27 @@ public class MainController {
     }
 
 
-    @RequestMapping("/file")
-//    @Value("")
-//    String folder = System.getProperty("user.dir")+File.separator+"upload"+File.separator;
-
+        @RequestMapping("/file")
         /**
-
          * 在配置文件中配置的文件保存路径
-
          */
-        public JSONObject upload(HttpServletRequest request, @RequestParam(value = "editormd-image-file", required = false) MultipartFile file) throws Exception {
-
+        public JSONObject upload(@RequestParam(value = "editormd-image-file", required = false) MultipartFile file)
+                throws Exception {
             String fileName = file.getOriginalFilename();
-
+            System.out.println("fileName" + fileName);
             String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
-
+            System.out.println("suffix" + suffix);
             String newFileName = new Date().getTime() + "." + suffix;
+            System.out.println("newFileName" + newFileName);
 
             File localFile = new File(folder, newFileName);
-
             file.transferTo(localFile);
-
 
             JSONObject res = new JSONObject();
             res.put("success",1);
             res.put("message","上传成功");
             res.put("url","upload/"+newFileName);
+            System.out.println("res: "+res);
             return res;
 
         }

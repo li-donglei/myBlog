@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
+
 
 
 @RestController
@@ -38,10 +37,6 @@ public class BlogController {
         return content;
     }
 
-//    @RequestMapping("getIndex")
-//    public Map<String,String> getIndex(Map<String,String> map){
-//        return map;
-//    }
 
     @RequestMapping("/insert")
     public void insertBlog(String title, String summary, String content,String createtime,String catalog){
@@ -75,7 +70,7 @@ public class BlogController {
         ModelAndView modelAndView = new ModelAndView("blog/view");
         //将内容发送至前台预览
         //modelAndView.addObject("viewContent" , content);
-        System.out.println("跳转至内容显示页面");
+        //System.out.println("跳转至内容显示页面");
         return modelAndView;
     }
 
@@ -87,18 +82,6 @@ public class BlogController {
         return con;
     }
 
-//    @RequestMapping("/show")
-//    @ResponseBody
-//    public ModelAndView show(){
-//        int id = blogService.lastId();
-//        ModelAndView modelAndView = new ModelAndView("blog/view");
-//        String content = selectBlog(id);
-//        System.out.println(id);
-//        modelAndView.addObject("viewContent" , content);
-//        System.out.println("跳转至内容显示页面");
-//        return modelAndView;
-//    }
-
     /**
      * 展示响应博客页面
      * @param id
@@ -109,7 +92,7 @@ public class BlogController {
     public ModelAndView show(@RequestParam(value = "id", required = false,defaultValue = "0") int id){
 
 
-        System.out.println(id);
+        //System.out.println(id);
         if(id == 0){
             id = blogService.lastId();
         }
@@ -119,7 +102,7 @@ public class BlogController {
         String content = selectBlog(id);
         //System.out.println(content);
         modelAndView.addObject("viewContent" , content);
-        System.out.println("跳转至内容显示页面");
+        //System.out.println("跳转至内容显示页面");
         return modelAndView;
     }
 

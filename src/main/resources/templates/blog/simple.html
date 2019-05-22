@@ -68,19 +68,11 @@
                     Catalog: <input type="text" name="catalog" id="catalog">
                 </div>
 
-
                 <div id="test-editormd">
-
-                    <textarea name="content" id="content" style="display:none;">
-                    </textarea>
+                    <textarea name="content" id="content" style="display:none;"></textarea>
                 </div>
-
-
-
             </form>
-
         </div>
-
 
         <script src="static/js/jquery.min.js"></script>
         <script src="static/js/editormd.min.js"></script>
@@ -90,7 +82,16 @@
                 function contentCommit(){
                     mdEditorForm.method = "post";
                     mdEditorForm.action = "contentCommit";//提交至服务器的路径
-                    mdEditorForm.submit();
+                    var title = $("#title").val();
+                    console.log("titlt: "+title);
+                    var summary = $("#summary").val();
+                    var catalog = $("#catalog").val();
+                    if(title!=""&&summary!=""&&catalog!=""){
+                        mdEditorForm.submit();
+                    }else{
+                        alert("表单未填写完整！！！");
+                    }
+
                 }
                 testEditor = editormd("test-editormd", {
                     width   : "90%",
@@ -120,7 +121,7 @@
                     toolbarHandlers:{
                         releaseIcon : function(cm, icon, cursor, selection) {
                             contentCommit();//提交表单代码在下面
-                            console.log("日志输出 testIcon =>", this, cm, icon, cursor, selection);
+                            //console.log("日志输出 testIcon =>", this, cm, icon, cursor, selection);
                         },
                         index : function(){
                             window.location.href = 'index.html';
