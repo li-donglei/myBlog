@@ -72,3 +72,9 @@ comment(评论)
 
 #### 后台管理
 
+admin
+
+#### 登陆验证页面
+
+blogedit、admin
+
