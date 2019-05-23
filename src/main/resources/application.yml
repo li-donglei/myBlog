@@ -1,3 +1,5 @@
+server:
+  port: 8080
 
 spring:
   port: 8080
@@ -5,13 +7,14 @@ spring:
     url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
     username: root
     password: 123456
+    # password: Abc123!_
     driver-class-name: com.mysql.cj.jdbc.Driver
   mvc:
     static-path-pattern: /static/**
 
 mybatis:
   type-aliases-package: com.donglei.myblog.entity
-server:
-  port:
+
 img:
   location: C:/Users/18451/Desktop/upload
+

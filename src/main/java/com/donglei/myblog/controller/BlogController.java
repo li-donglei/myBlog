@@ -106,6 +106,20 @@ public class BlogController {
         return modelAndView;
     }
 
+    @RequestMapping("/edit")
+    public ModelAndView edit(@RequestParam(value = "id", required = false,defaultValue = "0") int id){
+        if(id == 0){
+            id = blogService.lastId();
+        }
+        ModelAndView modelAndView = new ModelAndView();
+        String content = selectBlog(id);
+        //System.out.println(content);
+        modelAndView.addObject("Content" , content);
+
+        modelAndView.setViewName("blog/edit");
+        return modelAndView;
+    }
+
 
 
 }

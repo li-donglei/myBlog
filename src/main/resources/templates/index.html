@@ -63,6 +63,10 @@
 								&nbsp;&nbsp;&nbsp;
 								<span class="icon-eye"></span>&nbsp;
 								<span th:text="${blog.readsize}"></span>
+
+								&nbsp;&nbsp;&nbsp;
+								<span > <a th:href="@{'/edit?id='+${blog.id}}">编辑</a></span>
+
 								<br><br> <br>
 								<p th:text="${blog.summary}"></p>
 								<br><br>
