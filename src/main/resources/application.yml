@@ -4,6 +4,7 @@ server:
 spring:
   port: 8080
   datasource:
+    # url: jdbc:mysql://47.107.226.8:3306/test?serverTimezone=UTC
     url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
     username: root
     password: 123456
