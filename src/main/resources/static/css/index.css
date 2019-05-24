@@ -96,6 +96,8 @@ a {
 }
 
 .left{
+    float: left;
+
     display: inline-block;
     margin-left: 20px;
 
@@ -146,6 +148,8 @@ a {
 /* left*/
 /* middle*/
 .middle{
+    float: left;
+
     position: relative;
     display: inline-block;
     margin-left: 20px;
@@ -240,6 +244,8 @@ a {
 
 /* right*/
 .right{
+    float: left;
+
     display: inline-block;
     margin-left: 20px;
     width: 20%;

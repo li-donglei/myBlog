@@ -1,22 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>BackStage</title>
-    <link rel="stylesheet" href="static/css/backstage.css">
-    <link rel="stylesheet" href="static/fonts/style.css">
+    <link rel="stylesheet" href="../../static/css/backstage.css">
+    <link rel="stylesheet" href="../../static/fonts-icomoon/style.css">
 </head>
 <body>
 	<span class="icon-circle-left" ></span>
 	<span class="icon-circle-right"></span>
-	<aside class="aside">
+	<aside class="left">
+		<div class="myblog">
+			<a href="/adminBlog">我的博文</a>
+		</div>
 
 	</aside>
 
-	<div class="main"></div>
+	<div class="main">
+		<article class="blog-1" th:each="blog:${blog}">
+			<div class="blog">
+				<h1 ><a class="title" th:class="title" th:href="@{'/show?id='+${blog.id}}" th:text="${blog.title}"></a></h1>
+				<br>
+				<span class="icon-calendar"></span>&nbsp;
+				<span th:text="${#strings.substring(blog.createtime,0,11)}"></span>
+				&nbsp;&nbsp;&nbsp;
+				<span class="icon-price-tag"></span>&nbsp;
+				<span th:text="${blog.catalog}"></span>
+				&nbsp;&nbsp;&nbsp;
+				<span class="icon-eye"></span>&nbsp;
+				<span th:text="${blog.readsize}"></span>
+
+				&nbsp;&nbsp;&nbsp;
+				<span > <a th:href="@{'/edit?id='+${blog.id}}">编辑</a></span>
+
+				<br><br> <br>
+				<p th:text="${blog.summary}"></p>
+				<br><br>
+				<p class="article-more-link">
+					<a th:href="@{'/show?id='+${blog.id}}">查看全文</a>
+				</p>
+
+				<!--id: <span th:text="${blog.id}"></span>-->
+
+				<br>
+				<!--<span class="art-line"></span>-->
+			</div>
+
+		</article>
+	</div>
+	<!-- <aside class="right">
+		
+
+	</aside> -->
 
 
-<script src="static/js/jquery.min.js"></script>
+<script src="../../static/js/jquery.min.js"></script>
 <script>
 	$(function(){
 		$(".icon-circle-left").click(function(){
