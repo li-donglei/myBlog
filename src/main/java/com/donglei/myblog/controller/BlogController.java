@@ -112,11 +112,20 @@ public class BlogController {
             id = blogService.lastId();
         }
         ModelAndView modelAndView = new ModelAndView();
-        String content = selectBlog(id);
+        //String content = selectBlog(id);
         //System.out.println(content);
-        modelAndView.addObject("Content" , content);
+        Blog blog = blogService.selectBlog(id);
+        modelAndView.addObject("blog" , blog);
 
         modelAndView.setViewName("blog/edit");
+        return modelAndView;
+    }
+
+    @RequestMapping("/updateBlog")
+    public ModelAndView updateBlog(@ModelAttribute Blog blog,@RequestParam(value = "id") int id, ModelAndView modelAndView){
+        //String title = blog.getTitle();
+        blogService.updateBlog(blog);
+        modelAndView.setViewName("redirect:index");
         return modelAndView;
     }
 

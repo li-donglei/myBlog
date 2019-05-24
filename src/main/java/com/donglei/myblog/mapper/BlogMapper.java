@@ -28,4 +28,7 @@ public interface BlogMapper {
 
     @Update("update blog set readsize = readsize+1 where id=#{id}")
     void updateReadSize(Integer id);
+
+    @Update("update blog set title=#{title},summary=#{summary},content=#{content},createtime=#{createtime},catalog=#{catalog} where id = #{id}")
+    void updateBlog(Blog blog);
 }

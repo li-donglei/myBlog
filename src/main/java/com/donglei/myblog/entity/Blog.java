@@ -14,7 +14,21 @@ public class Blog implements Serializable {
     private String comment;
     private String catalog;
 
-
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", summary='" + summary + '\'' +
+                ", content='" + content + '\'' +
+                ", createtime='" + createtime + '\'' +
+                ", readsize=" + readsize +
+                ", commentsize=" + commentsize +
+                ", votesize=" + votesize +
+                ", comment='" + comment + '\'' +
+                ", catalog='" + catalog + '\'' +
+                '}';
+    }
 
     public Blog() {
     }

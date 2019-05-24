@@ -58,30 +58,38 @@
     </header>
     <form name="mdEditorForm">
         <div class="title">
-            <span>Title: </span><input type="text" name="title" id="title">
+            <span>Title: </span><input type="text" name="title" id="title" th:value="${blog.title}">
         </div>
         <div class="summary">
-            <span>Summary: </span><input type="text" name="summary" id="summary">
+            <span>Summary: </span><input type="text" name="summary" id="summary" th:value="${blog.summary}">
         </div>
 
         <div class="catalog">
-            Catalog: <input type="text" name="catalog" id="catalog">
+            Catalog: <input type="text" name="catalog" id="catalog" th:value="${blog.catalog}">
         </div>
+        <input type="hidden" id="createtime" name="createtime" th:value="${blog.createtime}">
+
 
         <div id="test-editormd">
-            <textarea name="content" id="content" style="display:none;" th:text="${Content}"></textarea>
+            <textarea name="content" id="content" style="display:none;" th:text="${blog.content}"></textarea>
         </div>
     </form>
+    <!--style="display: none"-->
+    <input type="hidden" id="blogId" th:value="${blog.id}">
+
 </div>
 
 <script src="static/js/jquery.min.js"></script>
 <script src="static/js/editormd.min.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" >
     var testEditor;
     $(function() {
         function contentCommit(){
+            var id = $("#blogId").val()
+            console.log("id"+id);
             mdEditorForm.method = "post";
-            mdEditorForm.action = "contentCommit";//提交至服务器的路径
+            mdEditorForm.action = "updateBlog?id="+id;//提交至服务器的路径
+
             var title = $("#title").val();
             console.log("titlt: "+title);
             var summary = $("#summary").val();

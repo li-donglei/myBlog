@@ -35,4 +35,8 @@ public class BlogService {
         blogMapper.updateReadSize(id);
     }
 
+    public void updateBlog(Blog blog){
+        blogMapper.updateBlog(blog);
+    }
+
 }
