@@ -23,7 +23,7 @@ public class AdminLoginAdapter implements WebMvcConfigurer {
         //super.addInterceptors(registry);
     }
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/image/**").addResourceLocations("file:C:/Users/18451/Desktop/");
+        registry.addResourceHandler("/**").addResourceLocations("file:C:/Users/18451/");
         //registry.addResourceHandler("/upload/**").addResourceLocations("file:C:/Users/18451/Desktop/upload/");
         registry.addResourceHandler("/images/**").addResourceLocations("file:/usr/developer/apache-tomcat-8.5.37/webapps/ROOT/images");
 
