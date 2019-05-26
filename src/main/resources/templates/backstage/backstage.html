@@ -33,6 +33,9 @@
 				&nbsp;&nbsp;&nbsp;
 				<span > <a th:href="@{'/edit?id='+${blog.id}}">编辑</a></span>
 
+				&nbsp;&nbsp;&nbsp;
+				<span > <a th:href="@{'/delete?id='+${blog.id}}">删除</a></span>
+
 				<br><br> <br>
 				<p th:text="${blog.summary}"></p>
 				<br><br>
@@ -59,7 +62,7 @@
 	$(function(){
 		$(".icon-circle-left").click(function(){
 			console.log("hiedn");
-			$(".aside").css("display","none");
+			$(".left").css("display","none");
 			$(".icon-circle-left").css("display","none");
 			$(".icon-circle-right").css("display","block");
 			$(".icon-circle-right").css("left","10px");
@@ -68,7 +71,7 @@
 		});
 		$(".icon-circle-right").click(function(){
 			console.log("hiedn");
-			$(".aside").css("display","inline-block");
+			$(".left").css("display","inline-block");
 			$(".icon-circle-left").css("display","block");
 			$(".icon-circle-right").css("display","none");
 			$(".main").css("width","78%");
