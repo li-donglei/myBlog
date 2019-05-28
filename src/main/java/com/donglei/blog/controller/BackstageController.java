@@ -2,9 +2,11 @@ package com.donglei.blog.controller;
 
 import com.donglei.blog.entity.Blog;
 import com.donglei.blog.service.BlogService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,10 +57,13 @@ public class BackstageController {
     }
 
     @RequestMapping("/adminBlog")
-    public ModelAndView adminBlog(ModelAndView modelAndView){
-        List<Blog> blog= blogService.selectBlog();
-        Collections.reverse(blog);//blog逆序
-        modelAndView.addObject("blog",blog);
+    public ModelAndView adminBlog(@RequestParam(value="pageNo",defaultValue="1")int pageNo,
+                                  @RequestParam(value="pageSize",defaultValue="5")int pageSize,
+                                  ModelAndView modelAndView){
+        PageInfo<Blog> page= blogService.selectBlog(pageNo, pageSize);
+
+
+        modelAndView.addObject("blog",page);
         modelAndView.setViewName("backstage/backstage");
         return modelAndView;
 

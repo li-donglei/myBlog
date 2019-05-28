@@ -1,47 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>BackStage</title>
-    <link rel="stylesheet" href="../../static/css/backstage.css">
-    <link rel="stylesheet" href="../../static/fonts-icomoon/style.css">
+	<meta charset="UTF-8">
+	<title>BackStage</title>
+	<link rel="stylesheet" href="static/css/backstage.css">
+	<link rel="stylesheet" href="static/fonts-icomoon/style.css">
+
+	<style>
+		.page {
+
+			width: 350px;
+			height: 35px;
+			text-align: center;
+			margin: 0 auto;
+			/*border: 1px solid red;*/
+
+		}
+		.page a{
+			color: gray;
+			style: none;
+		}
+
+		.page-td{
+
+			width: 50px;
+			border-radius: 5px;
+		}
+		.page-td:hover{
+			background-color: #00a8c6;
+		}
+
+	</style>
 </head>
 <body>
-	<span class="icon-circle-left" ></span>
-	<span class="icon-circle-right"></span>
-	<aside class="left">
-		<div class="myblog">
-			<a href="/adminBlog">我的博文</a>
-		</div>
+<span class="icon-circle-left" ></span>
+<span class="icon-circle-right"></span>
+<aside class="left">
+	<div class="myblog">
+		<a href="/adminBlog" class="myblog-btn">我的博文</a>
+	</div>
+	<div class="myblog">
+		<a href="/blogedit">写博客</a>
+	</div>
+	<div class="myblog">
+		<p class="personal-info-btn">个人信息</p>
+	</div>
 
-	</aside>
 
-	<div class="main">
-		<article class="blog-1" th:each="blog:${blog}">
+</aside>
+
+<div class="main">
+	<div th:if="${blog!=null}" class="main-blog">
+		<article class="blog-1" th:each="blogs:${blog.list}">
 			<div class="blog">
-				<h1 ><a class="title" th:class="title" th:href="@{'/show?id='+${blog.id}}" th:text="${blog.title}"></a></h1>
-				<br>
+				<h4><a class="title" th:class="title" th:href="@{'/show?id='+${blogs.id}}" th:text="${blogs.title}"></a>
+				</h4>
+
 				<span class="icon-calendar"></span>&nbsp;
-				<span th:text="${#strings.substring(blog.createtime,0,11)}"></span>
+				<!--<span th:text="${#strings.substring(blogs.createtime,0,11)}"></span>-->
+				<span th:text="${blogs.createtime}"></span>
+
 				&nbsp;&nbsp;&nbsp;
 				<span class="icon-price-tag"></span>&nbsp;
-				<span th:text="${blog.catalog}"></span>
+				<span th:text="${blogs.catalog}"></span>
 				&nbsp;&nbsp;&nbsp;
 				<span class="icon-eye"></span>&nbsp;
-				<span th:text="${blog.readsize}"></span>
+				<span th:text="${blogs.readsize}"></span>
 
 				&nbsp;&nbsp;&nbsp;
-				<span > <a th:href="@{'/edit?id='+${blog.id}}">编辑</a></span>
+				<span > <a class="edit" th:href="@{'/edit?id='+${blogs.id}}">编辑</a></span>
 
 				&nbsp;&nbsp;&nbsp;
-				<span > <a th:href="@{'/delete?id='+${blog.id}}">删除</a></span>
-
-				<br><br> <br>
-				<p th:text="${blog.summary}"></p>
-				<br><br>
-				<p class="article-more-link">
-					<a th:href="@{'/show?id='+${blog.id}}">查看全文</a>
-				</p>
+				<span > <a th:href="@{'/delete?id='+${blogs.id}}" class="delete">删除</a></span>
+				<p class="summary" th:text="${blogs.summary}"></p>
+				<!--<p class="article-more-link">-->
+				<!--<a th:href="@{'/show?id='+${blogs.id}}">查看全文</a>-->
+				<!--</p>-->
 
 				<!--id: <span th:text="${blog.id}"></span>-->
 
@@ -50,18 +84,56 @@
 			</div>
 
 		</article>
+
+		<table class="page" cellpadding="0" cellspacing="0">
+			<tr>
+				<td  class="page-td" th:if="${blog.hasPreviousPage}">
+					<a th:href="'?pageNo=1'">首页</a>
+				</td>
+				<td  class="page-td" th:if="${blog.hasPreviousPage}">
+					<a th:href="'?pageNo='+${blog.prePage}">上一页</a>
+				</td>
+				<td  class="page-td" th:each="nav:${blog.navigatepageNums}">
+					<a th:href="'?pageNo='+${nav}" th:text="${nav}" th:if="${nav != blog.pageNum}"></a>
+					<span style="font-weight: bold ;color: #000;" th:if="${nav == blog.pageNum}" th:text="${nav}"></span>
+				</td>
+				<td  class="page-td" th:if="${blog.hasNextPage}">
+					<a th:href="'?pageNo='+${blog.nextPage}">下一页</a>
+				</td>
+				<td  class="page-td" th:if="${blog.hasNextPage}">
+					<a th:href="'?pageNo='+${blog.pages}">尾页</a>
+				</td>
+			</tr>
+		</table>
+
 	</div>
-	<!-- <aside class="right">
-		
 
-	</aside> -->
+	<div class="personal-info" style="display: none;">
+		姓名：李东雷 <br>
+		状态：Student <br>
+		地址：江苏 · 徐州 <br>
+		pen-name：子沐 <br>
+	</div>
+
+</div>
+<!-- <aside class="right">
 
 
-<script src="../../static/js/jquery.min.js"></script>
+</aside> -->
+
+
+<script src="static/js/jquery.min.js"></script>
 <script>
 	$(function(){
+		$(".personal-info-btn").click(function () {
+			$(".main-blog").css({"display":"none"});
+			$(".personal-info").css({"display":"block"});
+		});
+		$(".myblog-btn").click(function () {
+			$(".main-blog").css({"display":"block"});
+			$(".personal-info").css({"display":"none"});
+		});
 		$(".icon-circle-left").click(function(){
-			console.log("hiedn");
 			$(".left").css("display","none");
 			$(".icon-circle-left").css("display","none");
 			$(".icon-circle-right").css("display","block");
@@ -70,12 +142,10 @@
 
 		});
 		$(".icon-circle-right").click(function(){
-			console.log("hiedn");
-			$(".left").css("display","inline-block");
+			$(".left").css("display","block");
 			$(".icon-circle-left").css("display","block");
 			$(".icon-circle-right").css("display","none");
-			$(".main").css("width","78%");
-
+			$(".main").css("width","80%");
 
 		});
 	})

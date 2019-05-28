@@ -9,9 +9,9 @@ $(function(){
 	window.onscroll=function(){
 		var scroH = $(this).scrollTop();
 		if(scroH>=navH-10){
-			$(".personal").css({"position":"fixed","top":20});
+			$(".personal").css({"position":"fixed","top":20,"width": "20%"});
 		}else {
-			$(".personal").css({"position":"fixed","top":navH-scroH});
+			$(".personal").css({"position":"fixed","top":navH-scroH,"width": "20%"});
 
 		}
 		// console.log(scroH);

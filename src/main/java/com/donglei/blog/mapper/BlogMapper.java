@@ -17,7 +17,7 @@ public interface BlogMapper {
     @Select("select * from blog where id = #{id}")
     Blog selectById(Long id);
 
-    @Select("select * from blog")
+    @Select("select * from blog order by id desc")
     List<Blog> selectBlog();
 
     @Select("select max(id) from blog")

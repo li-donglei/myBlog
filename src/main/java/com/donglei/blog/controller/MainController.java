@@ -4,6 +4,7 @@ package com.donglei.blog.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.donglei.blog.entity.Blog;
 import com.donglei.blog.service.BlogService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +30,16 @@ public class MainController {
     @Autowired
     BlogService blogService;
     @RequestMapping({"/","/index","/index.html"})
-    public ModelAndView index(ModelAndView mv){
-        mv.setViewName("index");
-        List<Blog> blog= blogService.selectBlog();
-        Collections.reverse(blog);//blog逆序
-        mv.addObject("blog",blog);
-        return mv;
+    //@RequestMapping("/page")
+    public ModelAndView index(@RequestParam(value="pageNo",defaultValue="1")int pageNo,
+                              @RequestParam(value="pageSize",defaultValue="5")int pageSize,
+                              ModelAndView modelAndView){
+
+
+        PageInfo<Blog> page = blogService.selectBlog(pageNo, pageSize);
+        modelAndView.addObject("blog",page);
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 
 

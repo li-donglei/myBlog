@@ -7,8 +7,8 @@ spring:
     #url: jdbc:mysql://47.107.226.8:3306/test?serverTimezone=UTC
     url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
     username: root
-    password: 123456
-    #password: Abc123!_
+    #password: 123456
+    password: Abc123!_
     driver-class-name: com.mysql.cj.jdbc.Driver
   mvc:
     static-path-pattern: /static/**
@@ -19,4 +19,10 @@ mybatis:
 img:
   #location: C:/Users/18451/Desktop/upload
   location: /usr/developer/apache-tomcat-8.5.37/webapps/ROOT/images
+  #pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params=count: countSql
 

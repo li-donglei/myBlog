@@ -2,6 +2,8 @@ package com.donglei.blog.service;
 
 import com.donglei.blog.entity.Blog;
 import com.donglei.blog.mapper.BlogMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +24,24 @@ public class BlogService {
         return "SUCCESS";
     }
 
-    public List<Blog> selectBlog(){
+//    public List<Blog> selectBlog(){
+//
+//        return blogMapper.selectBlog();
+//    }
+    /**
+     * 实现分页功能
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    public PageInfo<Blog> selectBlog(int pageNo, int pageSize){
 
-        return blogMapper.selectBlog();
+        PageHelper.startPage(pageNo,pageSize);
+        List<Blog> list = blogMapper.selectBlog();
+        //用PageInfo对结果进行包装
+        PageInfo<Blog> page = new PageInfo<Blog>(list);
+        return page;
+
     }
 
     public Long lastId(){
