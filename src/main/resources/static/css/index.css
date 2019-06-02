@@ -1,7 +1,7 @@
 /* 公共部分*/
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 a {
     text-decoration: none;
@@ -12,8 +12,8 @@ a {
 /* header */
 
 .header-main{
-    height: 100px;
-    /*background-color: cyan; */
+	height: 100px;
+	/*background-color: cyan; */
     background-color: #f5f8f9;
     /* 阴影*/
     /*background-color: #fff;*/
@@ -39,11 +39,11 @@ a {
     /*font-style: none;*/
     text-decoration: none;
     padding-left: 120px;
-    font-size: 30px;
+	font-size: 30px;
 }
 .header-nav {
     margin-left: 30px;
-    list-style: none;
+	list-style: none;
     display: inline-block;
 }
 .nav-search{
@@ -52,7 +52,7 @@ a {
 
 }
 .header-nav li{
-    float: left;
+	float: left;
     padding-left: 20px;
 
     color: #000;
@@ -91,6 +91,7 @@ a {
     margin-top: 30px;
     height: 1500px;
     margin-bottom: 20px;
+    /*background-color: gray;*/
 }
 
 .left{
@@ -164,7 +165,7 @@ a {
 }
 
 /*.middle-container a{*/
-/*color: #fff;*/
+    /*color: #fff;*/
 /*}*/
 
 .blog-1{
@@ -199,6 +200,7 @@ a {
 .title{
     text-decoration: none;
     color: #565a5f!important;
+
     font-weight: 400;
     font-size: 30px;
 

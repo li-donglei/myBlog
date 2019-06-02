@@ -3,7 +3,7 @@ package com.donglei.myblog.entity;
 import java.io.Serializable;
 
 public class Blog implements Serializable {
-    private Integer id;
+    private Long id;
     private String title;
     private String summary;
     private String content;
@@ -33,7 +33,20 @@ public class Blog implements Serializable {
     public Blog() {
     }
 
-    public Blog(String title, String summary, String content, String createtime,String catalog) {
+    public Blog(Long id, String title, String summary, String content, String createtime, Integer readsize, Integer commentsize, Integer votesize, String catalog) {
+        this.id = id;
+        this.title = title;
+        this.summary = summary;
+        this.content = content;
+        this.createtime = createtime;
+        this.readsize = readsize;
+        this.commentsize = commentsize;
+        this.votesize = votesize;
+        //this.comment = comment;
+        this.catalog = catalog;
+    }
+
+    public Blog(String title, String summary, String content, String createtime, String catalog) {
         this.title = title;
         this.summary = summary;
         this.content = content;
@@ -41,11 +54,11 @@ public class Blog implements Serializable {
         this.catalog = catalog;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

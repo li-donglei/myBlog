@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
-	<title>BackStage</title>
-	<link rel="stylesheet" href="static/css/backstage.css">
-	<link rel="stylesheet" href="static/fonts-icomoon/style.css">
+    <meta charset="UTF-8">
+    <title>BackStage</title>
+    <link rel="stylesheet" href="../../static/css/backstage.css">
+    <link rel="stylesheet" href="../../static/fonts-icomoon/style.css">
 
 	<style>
 		.page {
@@ -29,28 +29,95 @@
 		.page-td:hover{
 			background-color: #00a8c6;
 		}
+		.colors {
+			color: #62FFFF;
+			text-decoration-line: none;
+		}
+		.setting{
+			margin-bottom: 10px;
+			text-indent: 2em;
+		}
+		.setting-title{
+			margin-bottom: 10px;
+			text-indent: 1em;
+		}
+		.im{
+			width: 320px;
+			height: 250px;
+			text-align: center;
+			display: inline-block;
+			padding-top: 10px;
+			margin-right: 20px;
+			margin-top: 20px;
+			border: 1px solid gray;
+		}
+		.im-parent {
+			width: 98%;
+			margin-left: 20px;
+		}
+		.im a{
+			text-decoration: none;
+			color: #00c4ff;
+		}
+
 
 	</style>
 </head>
 <body>
-<span class="icon-circle-left" ></span>
-<span class="icon-circle-right"></span>
-<aside class="left">
-	<div class="myblog">
-		<a href="/adminBlog" class="myblog-btn">我的博文</a>
-	</div>
-	<div class="myblog">
-		<a href="/blogedit">写博客</a>
-	</div>
-	<div class="myblog">
-		<p class="personal-info-btn">个人信息</p>
-	</div>
+	<span class="icon-circle-left" ></span>
+	<span class="icon-circle-right"></span>
+	<aside class="left">
+
+			
+			<div class="myblog" style="font-size: 20px;color: #FFF;text-align: center;">
+				<br>
+				MYBLOG
+			</div>
+			<br>
+		
+			<p style="color: #fff">Dashboard</p>
+			<br>
+			<p class="colors setting">Dashboard</p>
+			<p class=" setting"><a href="/blogedit" target="_blank" class="colors">发布博客</a></p>
+
+			<br><br>
+		
+			<p class="colors setting-title" style="font-size: 14px;">管理模块</p>
+			
+		
+			<p class="setting"><a href="/adminBlog" class="colors myblog-btn setting">博客管理</a></p>
+			
+			<p class="colors personal-info-btn setting">评论管理</p>
+			<p class="colors personal-info-btn setting">标签管理</p>
+			<p class="colors personal-info-btn setting">分类管理</p>
+
+			<p class="setting"><a href="/admin/images" class="colors myblog-btn">图片管理</a></p>
+
+			<br>
+		
+			<p class="colors setting-title" style="font-size: 14px;">系统设置</p>
+			
+		
+			<p class="colors setting system-setting">系统配置</p>
+			<div class="back-hide" style="display: none;font-size: 14px;">
+				<p class="colors setting" style="text-indent: 3em;">个人信息</p>
+		
+				<p class="colors setting" style="text-indent: 3em;">站点信息</p>
+		
+				<p class="colors setting" style="text-indent: 3em;">底部设置</p>
+			</div>
+		
+			<p class="colors setting">修改密码</p>
+		
+		
+			<p class="colors setting">安全退出</p>
+		
 
 
-</aside>
+	</aside>
 
-<div class="main">
-	<div th:if="${blog!=null}" class="main-blog">
+	<div class="main">
+		<div th:if="${blog!=null}" class="main-blog">
 		<article class="blog-1" th:each="blogs:${blog.list}">
 			<div class="blog">
 				<h4><a class="title" th:class="title" th:href="@{'/show?id='+${blogs.id}}" th:text="${blogs.title}"></a>
@@ -74,7 +141,7 @@
 				<span > <a th:href="@{'/delete?id='+${blogs.id}}" class="delete">删除</a></span>
 				<p class="summary" th:text="${blogs.summary}"></p>
 				<!--<p class="article-more-link">-->
-				<!--<a th:href="@{'/show?id='+${blogs.id}}">查看全文</a>-->
+					<!--<a th:href="@{'/show?id='+${blogs.id}}">查看全文</a>-->
 				<!--</p>-->
 
 				<!--id: <span th:text="${blog.id}"></span>-->
@@ -106,25 +173,46 @@
 			</tr>
 		</table>
 
+		</div>
+		<div th:if="${list!=null}" class="im-parent">
+			<div class="im"th:each="images:${list}">
+
+
+				<img th:src="@{${images}}" width="300px" height="200px" alt="">
+				<a th:href="@{'/admin/deleteImage?url='+${images}}">删除</a>
+				<a href="#">查看</a>
+
+			</div>
+		</div>
+
+
+		<div class="personal-info" style="display: none;">
+			姓名：李东雷 <br>
+			状态：Student <br>
+			地址：江苏 · 徐州 <br>
+			pen-name：子沐 <br>
+		</div>
+
 	</div>
+	<!-- <aside class="right">
+		
 
-	<div class="personal-info" style="display: none;">
-		姓名：李东雷 <br>
-		状态：Student <br>
-		地址：江苏 · 徐州 <br>
-		pen-name：子沐 <br>
-	</div>
-
-</div>
-<!-- <aside class="right">
+	</aside> -->
 
 
-</aside> -->
-
-
-<script src="static/js/jquery.min.js"></script>
+<script src="../../static/js/jquery.min.js"></script>
 <script>
 	$(function(){
+		var i = 0;
+		$(".system-setting").click(function(){
+			if(i%2==0){
+				$(".back-hide").css({"display":"block"});
+				i++;
+			}else{
+				$(".back-hide").css({"display":"none"});
+				i--;
+			}
+		});
 		$(".personal-info-btn").click(function () {
 			$(".main-blog").css({"display":"none"});
 			$(".personal-info").css({"display":"block"});
@@ -145,7 +233,7 @@
 			$(".left").css("display","block");
 			$(".icon-circle-left").css("display","block");
 			$(".icon-circle-right").css("display","none");
-			$(".main").css("width","80%");
+			$(".main").css("width","88%");
 
 		});
 	})

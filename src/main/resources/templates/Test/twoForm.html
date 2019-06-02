@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Two Form</title>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Two Form Test</h1>
+
+    <form onsubmit="return false;">
+        姓名：<input type="text" name="name" id="name"> <br> <br>
+        年龄：<input type="text" name="age" id="age"> <br> <br>
+        <input type="submit" value="Submit" id="s1">
+    </form>
+
+    <form class="modal hide" onsubmit="return false;">
+        tel：<input type="text" name="tel" id="tel"> <br> <br>
+        Email：<input type="text" name="email" id="email"> <br> <br>
+        <input type="submit" value="Submit" id="s2">
+
+    </form>
+    <script src="../../static/js/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#s1").click(function () {
+                console.log("two Form.......");
+                var name = $("#name").val();
+                console.log(name);
+                $(".modal").removeClass("hide");
+            });
+            $("#s2").click(function () {
+                console.log("two Form.......");
+                var name = $("#name").val();
+                console.log(name);
+                var age = $("#age").val();
+                var tel = $("#tel").val();
+                var email = $("#email").val();
+                var data = {"name":name,"age":age,"tel":tel,"email":email};
+                console.log(data);
+                $.ajax({
+
+                    type:'POST',
+                    url:"/twoFormTest",
+                    data:data,
+                    success:function (res) {
+                        alert(res);
+                    }
+                });
+
+            });
+        })
+    </script>
+
+
+</body>
+</html>

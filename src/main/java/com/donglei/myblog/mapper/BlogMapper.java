@@ -1,10 +1,7 @@
 package com.donglei.myblog.mapper;
 
 import com.donglei.myblog.entity.Blog;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,21 +11,29 @@ import java.util.List;
 public interface BlogMapper {
 
 
-    @Insert("insert into blog(title,summary,content,createtime,catalog) values(#{title},#{summary},#{content},#{createtime},#{catalog})")
+    @Insert("insert into blog(id,  title,  summary,  content, createtime, readsize, commentsize, votesize,  catalog) values(#{id},#{title},#{summary},#{content},#{createtime},#{readsize}, #{commentsize}, #{votesize},#{catalog})")
     void insertBlog(Blog blog);
 
     @Select("select * from blog where id = #{id}")
-    Blog selectById(Integer id);
+    Blog selectById(Long id);
 
-    @Select("select * from blog")
+    @Select("select * from blog order by id desc")
     List<Blog> selectBlog();
 
     @Select("select max(id) from blog")
-    int lastId();
+    Long lastId();
 
     @Update("update blog set readsize = readsize+1 where id=#{id}")
-    void updateReadSize(Integer id);
+    void updateReadSize(Long id);
 
     @Update("update blog set title=#{title},summary=#{summary},content=#{content},createtime=#{createtime},catalog=#{catalog} where id = #{id}")
     void updateBlog(Blog blog);
+
+    @Delete("delete from blog where id=#{id}")
+    void deleteBlog(Long id);
+
+    @Select("select count(*) from blog")
+    Integer blogNums();
+    @Select("select count(distinct catalog) from blog")
+    Integer catalogNums();
 }

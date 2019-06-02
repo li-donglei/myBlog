@@ -1,15 +1,15 @@
 *{
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 /*aside*/
 .left {
-    float: left;
-    display: inline-block;
-    /*display: none;*/
-    width: 20%;
-    height: 648px;
-    background-color: #1F2325;
+	float: left;
+	display: inline-block;
+	/*display: none;*/
+	width: 12%;
+	height: 648px;
+	background-color: #1F2325;
 }
 /*.hiden {
 	width: 230px;
@@ -17,25 +17,25 @@
 	border-bottom:1px solid #626466;
 }*/
 .icon-circle-left, .icon-circle-right {
-    position: fixed;
-    color: #000;
-    font-size: 30px;
+	position: fixed;
+	color: #000;
+	font-size: 30px;
 
 }
 .icon-circle-left {
-    top: 600px;
-    left: 10px;
+	top: 600px;
+	left: 10px;
 }
 .icon-circle-right {
-    display: none;
-    top: 600px;
-    left: 60px;
+	display: none;
+	top: 600px;
+	left: 60px;
 }
 
 .myblog {
-    width: 100%;
-    height: 80px;
-    border-bottom: 1px solid #fff;
+	width: 100%;
+	height: 80px;
+	border-bottom: 1px solid #fff;
 }
 
 
@@ -43,12 +43,12 @@
 
 /*main*/
 .main {
-    float: left;
+	float: left;
 
-    display: inline-block;
-    height: 648px;
-    width: 80%;
-    background-color: #fff;
+	display: inline-block;
+	height: 648px;
+	width: 88%;
+	background-color: #fff;
 }
 
 .blog-1{

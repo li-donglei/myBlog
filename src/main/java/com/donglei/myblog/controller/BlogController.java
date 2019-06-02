@@ -2,6 +2,7 @@ package com.donglei.myblog.controller;
 
 import com.donglei.myblog.entity.Blog;
 import com.donglei.myblog.service.BlogService;
+import com.donglei.myblog.service.PVService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +21,9 @@ public class BlogController {
     @Autowired
     BlogService blogService;
 
+    @Autowired
+    PVService pvService;
+
     @RequestMapping("/blogedit")
     public ModelAndView blogedit(){
 
@@ -31,7 +35,7 @@ public class BlogController {
     }
 
     @RequestMapping("/select")
-    public String selectBlog(int id){
+    public String selectBlog(Long id){
         String content = blogService.selectBlog(id).getContent();
 //        System.out.println("content========"+content);
         return content;
@@ -39,8 +43,8 @@ public class BlogController {
 
 
     @RequestMapping("/insert")
-    public void insertBlog(String title, String summary, String content,String createtime,String catalog){
-        Blog blog = new Blog(title,summary,content,createtime,catalog);
+    public void insertBlog(Long id, String title, String summary, String content, String createtime, Integer readsize, Integer commentsize, Integer votesize, String catalog){
+        Blog blog = new Blog( id,  title,  summary,  content, createtime, readsize, commentsize, votesize,  catalog);
         blogService.insertBlog(blog);
         //return "success";
     }
@@ -49,6 +53,7 @@ public class BlogController {
     public ModelAndView contentCommit(@ModelAttribute Blog blog){
         // 获取title
         //String title = request.getParameter("title");
+
         String title = blog.getTitle();
         String content = blog.getContent();
         String summary = blog.getSummary();
@@ -57,15 +62,12 @@ public class BlogController {
 
         String createtime = sdf.format(new Date());
 
-
         String catalog = blog.getCatalog();
 
-//        System.out.println(title);
-//        System.out.println(createtime);
-        //String content = request.getParameter("content");
         // 将content存到数据库
-
-        insertBlog(title,summary,content,createtime,catalog);
+        long id = new Date().getTime();
+        Blog blog2 = new Blog( id,  title,  summary,  content, createtime, 0, 0, 0,  catalog);
+        blogService.insertBlog(blog2);
 
         ModelAndView modelAndView = new ModelAndView("blog/view");
         //将内容发送至前台预览
@@ -77,7 +79,7 @@ public class BlogController {
     @RequestMapping("getContent")
     @ResponseBody
     public String getContent(){
-        int id = blogService.lastId();
+        Long id = blogService.lastId();
         con = selectBlog(id);
         return con;
     }
@@ -89,9 +91,10 @@ public class BlogController {
      */
     @RequestMapping("/show")
     @ResponseBody
-    public ModelAndView show(@RequestParam(value = "id", required = false,defaultValue = "0") int id){
+    public ModelAndView show(@RequestParam(value = "id", required = false,defaultValue = "0") Long id){
 
-
+        // 更新PV访问量
+        pvService.updatePV();
         //System.out.println(id);
         if(id == 0){
             id = blogService.lastId();
@@ -107,7 +110,7 @@ public class BlogController {
     }
 
     @RequestMapping("/edit")
-    public ModelAndView edit(@RequestParam(value = "id", required = false,defaultValue = "0") int id){
+    public ModelAndView edit(@RequestParam(value = "id", required = false,defaultValue = "0") Long id){
         if(id == 0){
             id = blogService.lastId();
         }
@@ -122,11 +125,17 @@ public class BlogController {
     }
 
     @RequestMapping("/updateBlog")
-    public ModelAndView updateBlog(@ModelAttribute Blog blog,@RequestParam(value = "id") int id, ModelAndView modelAndView){
+    public ModelAndView updateBlog(@ModelAttribute Blog blog,@RequestParam(value = "id") Long id, ModelAndView modelAndView){
         //String title = blog.getTitle();
         blogService.updateBlog(blog);
         modelAndView.setViewName("redirect:index");
         return modelAndView;
+    }
+
+    @GetMapping("/delete")
+    public ModelAndView deleteBlog(@RequestParam(value = "id", required = false,defaultValue = "0") Long id){
+        blogService.deleteBlog(id);
+        return new ModelAndView("redirect:/adminBlog");
     }
 
 

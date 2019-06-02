@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
-	<title>子沐的空间 | 技术博客</title>
-	<link href="static/css/index.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>子沐的空间 | 技术博客</title>
+    <link href="static/css/index.css" rel="stylesheet" />
 	<link rel="stylesheet" href="static/fonts-icomoon/style.css">
 	<style>
 		.page {
@@ -32,129 +32,143 @@
 	</style>
 </head>
 <body>
-<div class="container">
+	<div class="container">
 	<!-- header -->
 
-	<header class="header-main">
-		<div class="nav">
-			<a class="nav-ico" href="#">My BLOG</a>
-			<ul class="header-nav">
-				<li><a href="/index.html" class="nav-a">首页</a></li>
-				<li><a href="#" class="nav-a">关于我</a></li>
-			</ul>
+		<header class="header-main">
+    		<div class="nav">
+    			<a class="nav-ico" href="#">My BLOG</a>
+                <ul class="header-nav">
+                	<li><a href="/index.html" class="nav-a">首页</a></li>
+                	<li><a href="#" class="nav-a">关于我</a></li>
+                </ul>
 
-			<form class="nav-search">
-				<input id="search" type="text" placeholder="搜索内容" />
-				<input id="submit-search" type="submit" value="搜索">
-			</form>
-		</div>
-
-	</header>
+                <form class="nav-search">
+                	<input id="search" type="text" placeholder="搜索内容" />
+                	<input id="submit-search" type="submit" value="搜索">
+                </form>
+    		</div>
+		
+    	</header>
 	<!-- header -->
-
+    	
 	<!-- body -->
-	<div class="main">
-		<div class="left">
-			<div class="left-container">
-				<div class="personal">
-					<img src="../static/images/erweima.png" alt="">
-					<br>
-					<a href="https://www.github.com/li-donglei" target="_blank"><h2>李东雷</h2></a>
-					<h3>Student</h3>
-					<span class="location">江苏 · 徐州</span>
-					<span class="line"></span>
+		<div class="main">
+			<div class="left">
+				<div class="left-container">
+					<div class="personal">
+						<img src="../static/images/erweima.png" alt="">
+						<br>
+						<a href="https://www.github.com/li-donglei" target="_blank"><h2>李东雷</h2></a>
+						<h3>Student</h3>
+						<span class="location">江苏 · 徐州</span>
+						<span class="line"></span>
+						<div style="display: inline-block;padding: 5px;padding-right: 30px">
+							<p style="font-size: 15px">文章</p>
+							<p style="font-size: 35px" th:text="${blogNums}">5</p>
+						</div>
+						<div style="display: inline-block;padding: 5px;padding-left: 30px;border-left: 1px solid #000">
+							<p style="font-size: 15px"> 标签</p>
+							<p style="font-size: 35px" th:text="${catalogNums}">5</p>
+						</div>
+						<span class="line" style="margin-top: 0px"></span>
 
+
+					</div>
+				</div>
+
+			</div>
+			<div class="middle">
+				<div class="middle-container">
+					<!-- <a href="/show">文章</a> -->
+					<!--<span th:text="${hello}"></span>-->
+					<!--<div >-->
+						<article class="blog-1" th:each="blogs:${blog.list}">
+							<div class="blog">
+								<h1 ><a class="title" th:class="title" th:href="@{'/show?id='+${blogs.id}}" th:text="${blogs.title}"></a></h1>
+								<br>
+								<span class="icon-calendar"></span>&nbsp;
+								<span th:text="${#strings.substring(blogs.createtime,0,11)}"></span>
+								&nbsp;&nbsp;&nbsp;
+								<span class="icon-price-tag"></span>&nbsp;
+								<span th:text="${blogs.catalog}"></span>
+								&nbsp;&nbsp;&nbsp;
+								<span class="icon-eye"></span>&nbsp;
+								<span th:text="${blogs.readsize}"></span>
+
+								<!--&nbsp;&nbsp;&nbsp;-->
+								<!--<span > <a th:href="@{'/edit?id='+${blog.id}}">编辑</a></span>-->
+
+								<br><br> <br>
+								<p th:text="${blogs.summary}"></p>
+								<br><br>
+								<p class="article-more-link">
+									<a th:href="@{'/show?id='+${blogs.id}}">查看全文</a>
+								</p>
+
+								<!--id: <span th:text="${blog.id}"></span>-->
+
+								<br>
+								<!--<span class="art-line"></span>-->
+							</div>
+
+						</article>
+					<!--</div>-->
+					<!--class="gridtable"-->
+					<table class="page" cellpadding="0" cellspacing="0">
+						<tr>
+							<td  class="page-td" th:if="${blog.hasPreviousPage}">
+								<a th:href="'?pageNo=1'">首页</a>
+							</td>
+							<td  class="page-td" th:if="${blog.hasPreviousPage}">
+								<a th:href="'?pageNo='+${blog.prePage}">上一页</a>
+							</td>
+							<td  class="page-td" th:each="nav:${blog.navigatepageNums}">
+								<a th:href="'?pageNo='+${nav}" th:text="${nav}" th:if="${nav != blog.pageNum}"></a>
+								<span style="font-weight: bold ;color: #000;" th:if="${nav == blog.pageNum}" th:text="${nav}"></span>
+							</td>
+							<td  class="page-td" th:if="${blog.hasNextPage}">
+								<a th:href="'?pageNo='+${blog.nextPage}">下一页</a>
+							</td>
+							<td  class="page-td" th:if="${blog.hasNextPage}">
+								<a th:href="'?pageNo='+${blog.pages}">尾页</a>
+							</td>
+						</tr>
+					</table>
+
+				</div>
+
+
+				<div ></div>
+				
+			</div>
+			<div class="right">
+				<div class="right-container">
+					<h3>Archives</h3>
 				</div>
 			</div>
 
 		</div>
-		<div class="middle">
-			<div class="middle-container">
-				<!-- <a href="/show">文章</a> -->
-				<!--<span th:text="${hello}"></span>-->
-				<!--<div >-->
-				<article class="blog-1" th:each="blogs:${blog.list}">
-					<div class="blog">
-						<h1 ><a class="title" th:class="title" th:href="@{'/show?id='+${blogs.id}}" th:text="${blogs.title}"></a></h1>
-						<br>
-						<span class="icon-calendar"></span>&nbsp;
-						<span th:text="${#strings.substring(blogs.createtime,0,11)}"></span>
-						&nbsp;&nbsp;&nbsp;
-						<span class="icon-price-tag"></span>&nbsp;
-						<span th:text="${blogs.catalog}"></span>
-						&nbsp;&nbsp;&nbsp;
-						<span class="icon-eye"></span>&nbsp;
-						<span th:text="${blogs.readsize}"></span>
-
-						<!--&nbsp;&nbsp;&nbsp;-->
-						<!--<span > <a th:href="@{'/edit?id='+${blog.id}}">编辑</a></span>-->
-
-						<br><br> <br>
-						<p th:text="${blogs.summary}"></p>
-						<br><br>
-						<p class="article-more-link">
-							<a th:href="@{'/show?id='+${blogs.id}}">查看全文</a>
-						</p>
-
-						<!--id: <span th:text="${blog.id}"></span>-->
-
-						<br>
-						<!--<span class="art-line"></span>-->
-					</div>
-
-				</article>
-				<!--</div>-->
-				<!--class="gridtable"-->
-				<table class="page" cellpadding="0" cellspacing="0">
-					<tr>
-						<td  class="page-td" th:if="${blog.hasPreviousPage}">
-							<a th:href="'?pageNo=1'">首页</a>
-						</td>
-						<td  class="page-td" th:if="${blog.hasPreviousPage}">
-							<a th:href="'?pageNo='+${blog.prePage}">上一页</a>
-						</td>
-						<td  class="page-td" th:each="nav:${blog.navigatepageNums}">
-							<a th:href="'?pageNo='+${nav}" th:text="${nav}" th:if="${nav != blog.pageNum}"></a>
-							<span style="font-weight: bold ;color: #000;" th:if="${nav == blog.pageNum}" th:text="${nav}"></span>
-						</td>
-						<td  class="page-td" th:if="${blog.hasNextPage}">
-							<a th:href="'?pageNo='+${blog.nextPage}">下一页</a>
-						</td>
-						<td  class="page-td" th:if="${blog.hasNextPage}">
-							<a th:href="'?pageNo='+${blog.pages}">尾页</a>
-						</td>
-					</tr>
-				</table>
-
-			</div>
-
-
-			<div ></div>
-
-		</div>
-		<div class="right">
-			<div class="right-container">
-				<h2>Archives</h2>
-			</div>
-		</div>
-
-	</div>
+		<!--<span style="position: fixed;right: 20px;bottom: 20px;" class="icon-circle-up"><a href="#">顶部</a></span>-->
 	<!-- body -->
 	<!-- footer -->
-	<footer class="site-footer">
-		<div class="footer-menu">
-			<span>Theme by Zimu | Power by Zimu</span>
-		</div>
-		<div class="site-info">
-			苏ICP备19007122号-1
-		</div>
+		<footer class="site-footer">
+			<div class="footer-menu">
+				<span>Theme by Zimu | Power by Zimu</span>
+			</div>
+			<div class="footer-menu">
+				<span>本站访问量PV：<span th:text="${PV}"></span> | 访客数IP：10</span>
+			</div>
+			<div class="site-info">
+				苏ICP备19007122号-1
+			</div>
 
-	</footer>
+		</footer>
 	<!-- footer -->
 
-</div>
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/index.js"></script>
-
+	</div>
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/index.js"></script>
+    
 </body>
 </html>
