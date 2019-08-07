@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
+    <style th:fragment="footer_style">
         .site-footer{
             background-color: #474e5d ;
-            height: 80px;
+            height: 120px;
             color:#b3b5ba;
             text-align: center;
             padding-top: 30px;
@@ -15,15 +15,21 @@
 </head>
 <body>
 
-<footer class="site-footer" th:fragment="footer">
-    <div class="footer-menu">
-        <span>Theme by Zimu | Power by Zimu</span>
-    </div>
-    <div class="site-info">
-        苏ICP备19007122号-1
-    </div>
+<div th:fragment="footer">
+    <footer class="site-footer" >
+        <div class="footer-menu">
+            <span>Theme by Zimu | Power by Zimu</span>
+        </div>
+        <div class="footer-menu">
+            <span>本站访问量PV：<span th:text="${PV}"></span> | 访客数IP：10</span>
+        </div>
+        <div class="site-info">
+            苏ICP备19007122号-1
+        </div>
 
-</footer>
+    </footer>
+</div>
+
 
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.donglei.blog.controller;
 
 import com.donglei.blog.entity.Blog;
 import com.donglei.blog.service.BlogService;
+import com.donglei.blog.service.PVService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +20,9 @@ public class BlogController {
 
     @Autowired
     BlogService blogService;
+
+    @Autowired
+    PVService pvService;
 
     @RequestMapping("/blogedit")
     public ModelAndView blogedit(){
@@ -89,7 +93,8 @@ public class BlogController {
     @ResponseBody
     public ModelAndView show(@RequestParam(value = "id", required = false,defaultValue = "0") Long id){
 
-
+        // 更新PV访问量
+        pvService.updatePV();
         //System.out.println(id);
         if(id == 0){
             id = blogService.lastId();
@@ -100,6 +105,7 @@ public class BlogController {
         String content = selectBlog(id);
         //System.out.println(content);
         modelAndView.addObject("viewContent" , content);
+        modelAndView.addObject("PV",pvService.getPV());
         //System.out.println("跳转至内容显示页面");
         return modelAndView;
     }

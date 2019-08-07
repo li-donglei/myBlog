@@ -12,6 +12,7 @@
             margin: 0 auto;
         }
     </style>
+    <style th:include="segment/footer::footer_style"></style>
 </head>
 <body>
 <div id="layout">
@@ -32,6 +33,7 @@
                 <textarea id="append-test" style="display:none;" th:text="${viewContent}">
                 </textarea>
     </div>
+    <div th:include="segment/footer::footer"></div>
 </div>
 <!-- <script src="js/zepto.min.js"></script>
 <script>

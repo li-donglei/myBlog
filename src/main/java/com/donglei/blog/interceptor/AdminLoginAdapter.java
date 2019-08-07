@@ -15,17 +15,16 @@ public class AdminLoginAdapter implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/admin").excludePathPatterns("/login/**");
+        registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/admin/**").excludePathPatterns("/login/**");
         registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/blogedit").excludePathPatterns("/login/**");
         registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/adminBlog").excludePathPatterns("/login/**");
-        registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/edit").excludePathPatterns("/login/**");
-
 
         //super.addInterceptors(registry);
     }
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**").addResourceLocations("file:C:/Users/18451/");
-        //registry.addResourceHandler("/upload/**").addResourceLocations("file:C:/Users/18451/Desktop/upload/");
-        registry.addResourceHandler("/images/**").addResourceLocations("file:/usr/developer/apache-tomcat-8.5.37/webapps/ROOT/images");
+        registry.addResourceHandler("/desktop/**").addResourceLocations("file:C:/users/18451/desktop/");
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:C:/Users/18451/Desktop/upload/");
+        //registry.addResourceHandler("/upload/**").addResourceLocations("file:/usr/develop/upload");
 
 
     }

@@ -1,14 +1,14 @@
 server:
-  port: 8081
+  port: 80
 
 spring:
-  port: 8081
+  port: 80
   datasource:
     #url: jdbc:mysql://47.107.226.8:3306/test?serverTimezone=UTC
     url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
     username: root
-    password: 123456
-    #password: Abc123!_
+#    password: 123456
+    password: Abc123!_
     driver-class-name: com.mysql.cj.jdbc.Driver
   mvc:
     static-path-pattern: /static/**
@@ -17,8 +17,8 @@ mybatis:
   type-aliases-package: com.donglei.myblog.entity
 
 img:
-  location: C:/Users/18451/Desktop/upload
-#  location: /usr/develop/upload
+#  location: C:/Users/18451/Desktop/upload
+  location: /usr/develop/upload
 
 #pagehelper分页插件配置
 pagehelper:

@@ -24,10 +24,6 @@ public class BlogService {
         return "SUCCESS";
     }
 
-//    public List<Blog> selectBlog(){
-//
-//        return blogMapper.selectBlog();
-//    }
     /**
      * 实现分页功能
      * @param pageNo
@@ -43,6 +39,7 @@ public class BlogService {
         return page;
 
     }
+
 
     public Long lastId(){
         return blogMapper.lastId();
@@ -60,4 +57,17 @@ public class BlogService {
         blogMapper.deleteBlog(id);
     }
 
+    public Integer blogNums(){
+        return blogMapper.blogNums();
+    }
+    public Integer catalogNums(){
+        return blogMapper.catalogNums();
+    }
+
+    public void insertIP(String ip){
+        blogMapper.insertIP(ip);
+    }
+    public List<String> selectIP(){
+        return blogMapper.selectIP();
+    }
 }

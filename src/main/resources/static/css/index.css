@@ -12,7 +12,7 @@ a {
 /* header */
 
 .header-main{
-	height: 100px;
+	height: 70px;
 	/*background-color: cyan; */
     background-color: #f5f8f9;
     /* 阴影*/
@@ -23,7 +23,7 @@ a {
     text-decoration: none;
     color: #000;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
     font-family: "Arial Black";
 }
 .nav-a:hover{
@@ -31,14 +31,16 @@ a {
 }
 
 .nav{
-    padding-top: 30px;
+    padding-top: 10px;
+    width: 1152px;
+    margin: 0 auto;
 }
 .nav-ico {
     /*font-family: 'Monoton';*/
     color: #000;
     /*font-style: none;*/
     text-decoration: none;
-    padding-left: 120px;
+    /*padding-left: 120px;*/
 	font-size: 30px;
 }
 .header-nav {
@@ -88,9 +90,13 @@ a {
 /*body main*/
 /*left*/
 .main{
-    margin-top: 30px;
+    /*margin-top: 30px;*/
+    width: 1152px;
     height: 1500px;
-    margin-bottom: 20px;
+    margin: 30px auto 20px auto;
+    background-color: #fff;
+
+    /*margin-bottom: 20px;*/
     /*background-color: gray;*/
 }
 
@@ -99,7 +105,8 @@ a {
     width: 20%;
     height: 1500px;
     display: inline-block;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
+    margin-right: 20px;
 }
 .left-container{
     width: 100%;
@@ -108,7 +115,7 @@ a {
 
 .personal{
     /*width: 250px;*/
-    width: 100%;
+    width: 230px;
     background-color: #fff;
     /* 阴影*/
     /*box-shadow: 0 0 3px gray;*/
@@ -147,8 +154,8 @@ a {
 
     /*position: relative;*/
     display: inline-block;
-    margin-left: 20px;
-    width: 53%;
+    /*margin-left: 20px;*/
+    width: 73%;
     height: 1500px;
     /*background-color: #128;*/
     background-color: #fff;
@@ -235,22 +242,22 @@ a {
 /* middle*/
 
 /* right*/
-.right{
-    float: left;
+/*.right{*/
+    /*float: left;*/
 
-    display: inline-block;
-    margin-left: 20px;
-    width: 20%;
-    height: 1500px;
-    /*background-color: #299;*/
-    background-color: #fff;
-    /* 阴影*/
-    /*box-shadow: 0 0 12px gray;*/
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
-    border-radius: 20px;
+    /*display: inline-block;*/
+    /*margin-left: 20px;*/
+    /*width: 20%;*/
+    /*height: 1500px;*/
+    /*!*background-color: #299;*!*/
+    /*background-color: #fff;*/
+    /*!* 阴影*!*/
+    /*!*box-shadow: 0 0 12px gray;*!*/
+    /*box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);*/
+    /*border-radius: 20px;*/
 
 
-}
+/*}*/
 .right-container{
     margin-top: 20px;
     margin-left: 30px;

@@ -31,4 +31,15 @@ public interface BlogMapper {
 
     @Delete("delete from blog where id=#{id}")
     void deleteBlog(Long id);
+
+    @Select("select count(*) from blog")
+    Integer blogNums();
+    @Select("select count(distinct catalog) from blog")
+    Integer catalogNums();
+    // 插入 存储 访问者 IP
+    @Insert("insert into ip values(#{ip})")
+    void insertIP(String ip);
+    // 查询IP
+    @Select("select * from ip")
+    List<String> selectIP();
 }
